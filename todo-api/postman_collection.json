@@ -1,0 +1,121 @@
+{
+  "info": {
+    "name": "TODO REST API",
+    "description": "Postman collection for the TODO REST API assignment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "todo_id",
+      "value": "replace-with-created-todo-id"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Create Todo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Learn REST APIs\",\n  \"description\": \"Build a TODO API\",\n  \"completed\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/todos",
+          "host": ["{{base_url}}"],
+          "path": ["todos"]
+        }
+      }
+    },
+    {
+      "name": "Get All Todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos",
+          "host": ["{{base_url}}"],
+          "path": ["todos"]
+        }
+      }
+    },
+    {
+      "name": "Get Todo By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Todo",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Learn REST APIs\",\n  \"description\": \"Build and test the API\",\n  \"completed\": true\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Todo",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos/{{todo_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "{{todo_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Invalid ID Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/todos/not-a-valid-id",
+          "host": ["{{base_url}}"],
+          "path": ["todos", "not-a-valid-id"]
+        }
+      }
+    }
+  ]
+}
